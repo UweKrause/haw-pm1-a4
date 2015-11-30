@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class MyPi - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-get_n_digit_of_pi">#get_n_digit_of_pi</a>
+    
+    <li ><a href="#method-i-get_n_digit_of_pi_dual">#get_n_digit_of_pi_dual</a>
+    
+    <li ><a href="#method-i-initialize">#initialize</a>
+    
+    <li ><a href="#method-i-my_pi">#my_pi</a>
+    
+    <li ><a href="#method-i-praezisionstest">#praezisionstest</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-MyPi">
+  <h1 id="class-MyPi" class="class">
+    class MyPi
+  </h1>
+
+  <section class="description">
+    
+<p>Klasse zur Berechnung von PI</p>
+
+<p>Bei 11 Iterationen der Formel wird die gleiche Genauigkeit wie bei Math::PI
+erreicht.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-get_n_digit_of_pi" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_n_digit_of_pi</span><span
+            class="method-args">(n, system = 10)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Aufgabe 1.2.2 - n-te Nachkommastelle von pi</p>
+
+<h4 id="method-i-get_n_digit_of_pi-label-Atrributes">Atrributes<span><a href="#method-i-get_n_digit_of_pi-label-Atrributes">&para;</a> <a href="#top">&uarr;</a></span></h4>
+<ul><li>
+<p><code>n</code> Integer: Wievielte Nachkommastelle</p>
+</li><li>
+<p><code>system</code> Welches Zahlensystem wird verwendet? 2 fuer Binaer, 10
+fuer Dezimal</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="get_n_digit_of_pi-source">
+            <pre><span class="ruby-comment"># File 1_2_my_pi.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_n_digit_of_pi</span>(<span class="ruby-identifier">n</span>, <span class="ruby-identifier">system</span> = <span class="ruby-value">10</span>)
+  <span class="ruby-comment"># erstmal paar Fehler werfen, wenn wir kein Integer bekommen</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">RangeError</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">system</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">RangeError</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>
+
+  <span class="ruby-identifier">my_pi</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">my_pi</span>(<span class="ruby-identifier">n</span>)
+
+  <span class="ruby-identifier">multipliziere_mit_faktor</span> = <span class="ruby-identifier">my_pi</span> <span class="ruby-operator">*</span> <span class="ruby-value">10</span><span class="ruby-operator">**</span>(<span class="ruby-identifier">n</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+  <span class="ruby-comment"># beste(?) Methode, um den ganzzahligen Teil abzuschneiden: % 1</span>
+  <span class="ruby-identifier">abschneiden</span> = <span class="ruby-identifier">multipliziere_mit_faktor</span> <span class="ruby-operator">%</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">multipliziere</span> = <span class="ruby-identifier">abschneiden</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">system</span>
+  <span class="ruby-comment"># beste(?) Methode um Nachkommastellen zu entfernen: to_i</span>
+  <span class="ruby-identifier">multipliziere</span>.<span class="ruby-identifier">to_i</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_n_digit_of_pi_dual" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_n_digit_of_pi_dual</span><span
+            class="method-args">(n)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Aufgabe 1.2.3 - n-te Nachkommastelle von Pi in Binaerdarstellung</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_n_digit_of_pi_dual-source">
+            <pre><span class="ruby-comment"># File 1_2_my_pi.rb, line 81</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_n_digit_of_pi_dual</span>(<span class="ruby-identifier">n</span>)
+
+  <span class="ruby-identifier">get_n_digit_of_pi</span>(<span class="ruby-identifier">n</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">to_s</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-my_pi" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">my_pi</span><span
+            class="method-args">(n = @genauigkeit)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Aufgabe 1.2.1 - Implementierung der Bailey-Borwein-Plouffe-Formel</p>
+          
+          
+
+          
+          <div class="method-source-code" id="my_pi-source">
+            <pre><span class="ruby-comment"># File 1_2_my_pi.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">my_pi</span>(<span class="ruby-identifier">n</span> = <span class="ruby-ivar">@genauigkeit</span>)
+
+  <span class="ruby-comment"># erstmal paar Fehler werfen</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">RangeError</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">RangeError</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>
+
+  <span class="ruby-identifier">wert</span> = <span class="ruby-value">0.0</span>
+  <span class="ruby-identifier">n</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">k</span> = <span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_f</span>
+    <span class="ruby-identifier">wert</span> <span class="ruby-operator">+=</span> (<span class="ruby-value">1.0</span><span class="ruby-operator">/</span>(<span class="ruby-value">16</span><span class="ruby-operator">**</span><span class="ruby-identifier">k</span>)) <span class="ruby-operator">*</span> ((<span class="ruby-value">4</span><span class="ruby-operator">/</span>(<span class="ruby-value">8</span><span class="ruby-operator">*</span><span class="ruby-identifier">k</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)) <span class="ruby-operator">-</span> (<span class="ruby-value">2</span><span class="ruby-operator">/</span>(<span class="ruby-value">8</span><span class="ruby-operator">*</span><span class="ruby-identifier">k</span><span class="ruby-operator">+</span><span class="ruby-value">4</span>)) <span class="ruby-operator">-</span> (<span class="ruby-value">1</span><span class="ruby-operator">/</span>(<span class="ruby-value">8</span><span class="ruby-operator">*</span><span class="ruby-identifier">k</span><span class="ruby-operator">+</span><span class="ruby-value">5</span>)) <span class="ruby-operator">-</span> (<span class="ruby-value">1</span><span class="ruby-operator">/</span>(<span class="ruby-value">8</span><span class="ruby-operator">*</span><span class="ruby-identifier">k</span><span class="ruby-operator">+</span><span class="ruby-value">6</span>)))
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">wert</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-praezisionstest" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">praezisionstest</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Aufgabe 1.2.1 - Wie schnell kommen wir auf den gleichen wert wie Math::PI?</p>
+          
+          
+
+          
+          <div class="method-source-code" id="praezisionstest-source">
+            <pre><span class="ruby-comment"># File 1_2_my_pi.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">praezisionstest</span>()
+  <span class="ruby-comment"># Pruefe die Rueckgabewerte der Implementierung gegen die Vorgabe von Math::PI</span>
+  <span class="ruby-comment"># solange bis ausreichende Genauigkeit erreicht ist</span>
+  <span class="ruby-comment"># Genauigkeit entspricht NICHT der Anzahl der Nachkommastellen!</span>
+
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">x</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">77</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">pi_errechnet</span> = <span class="ruby-identifier">my_pi_iterativ</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-constant">PI</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">pi_errechnet</span> <span class="ruby-operator">==</span> <span class="ruby-value">0.0</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">x</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Falls die Schleife nicht innerhalb der definierten Anzahl von Aufrufen zu einem Ergebnis kommen sollte</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">StopIteration</span>
+  <span class="ruby-comment"># Kommt in diesem Beispiel nicht vor</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Protected Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-initialize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initialize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="initialize-source">
+            <pre><span class="ruby-comment"># File 1_2_my_pi.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>() <span class="ruby-comment">#:notnew:</span>
+
+  <span class="ruby-comment"># Aus der Aufgabe 1.2.2 wissen wir, wie oft die Formel durchlaufen werden muss,</span>
+  <span class="ruby-comment"># um zur gleichen Genauigkeit zu kommen, wie Math::PI</span>
+  <span class="ruby-comment"># Genauigkeit NICHT Anzahl der Nachkommastellen!</span>
+
+  <span class="ruby-comment">#@genauigkeit = praezisionstest()</span>
+  <span class="ruby-ivar">@genauigkeit</span> = <span class="ruby-value">11</span>
+
+  <span class="ruby-ivar">@my_pi</span> = <span class="ruby-identifier">my_pi</span>(<span class="ruby-ivar">@genauigkeit</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

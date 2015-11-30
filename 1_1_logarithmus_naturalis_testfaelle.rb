@@ -6,7 +6,8 @@ require "1_1_logarithmus_naturalis"
 require "test/unit"
 require 'bigdecimal'
 
-class Log_test < Test::Unit::TestCase
+class UnittestLogarithmus < Test::Unit::TestCase
+  # Stellt Testwerte bereit
   def setup
 
     @values_positive_float = [0.1, 0.2, 0.6, 0.9, 1.0, 1.3, 1.5, 1.9, 2.0]
@@ -23,6 +24,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # Testet positive Floatzahlen innerhalb des erlaubten Bereiches
   def test_positive_float
 
     @values_positive_float.each { |x|
@@ -31,6 +33,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # Testet, ob bei negative Floatzahlen ein korrekter Fehler erzeugt wird
   def test_negative_float
 
     @values_positive_float.each { |x|
@@ -39,6 +42,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # Testet, ob bei positive Floatzahlen ausserhalb des erlaubten Bereiches ein korrekter Fehler erzeugt wird
   def test_positive_float_out_of_range
 
     @values_positive_float_out_of_range.each { |x|
@@ -49,6 +53,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # Testet, ob BigDecimal innerhalb des erlaubte Bereiches einen korrekten Wert liefern
   def test_positive_bigdecimal
 
     @values_positive_bigdecimal.each { |x|
@@ -57,6 +62,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # Testet, ob grosse (Lange) Werte von BigDecimal innerhalb des erlaubte Bereiches einen korrekten Wert liefern
   def test_positive_big_bigdecimal
 
     @values_positive_big_bigdecimal.each { |x|
@@ -66,6 +72,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # testet, ob bei uebergebene Integer innerhalb des erlaubten Bereiches trotzdem einen korrekten Wert geliefert wird
   def test_positive_integer
 
     @values_positive_integer.each { |x|
@@ -74,6 +81,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # testet, ob bei uebergebenem fehlerhaften Integer ein korrekter Fehler erzeugt wird
   def test_negative_integer
 
     @values_negative_integer.each { |x|
@@ -84,6 +92,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # Testet, ob bei uebergebenem String ein korrekter Fehler erzeugt wird
   def test_string
 
     @values_string.each { |x|
@@ -94,6 +103,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # Testet, ob bei der Uebergabe von Infinity ein korrekter Fehler erzeugt wird
   def test_infinity
 
     x = 1.0 / 0.0 # => Infinity
@@ -104,6 +114,7 @@ class Log_test < Test::Unit::TestCase
 
   end
 
+  # Testet, ob bei der Uebergabe von NaN ein korrekter Fehler erzeugt wird
   def test_NaN
 
     x = 0.0 / 0.0 # => NaN

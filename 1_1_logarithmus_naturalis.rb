@@ -2,8 +2,12 @@
 # Author:: Uwe Krause
 # Author:: Lucas Anders
 
-require 'bigdecimal'
-
+# Reihenentwicklung des natuerlichen Logarithmus
+#
+# Implementiert in 3 verschiedenen Varianten
+# 1. For-Schleife
+# 2. reduce
+# 3. rekursiv
 def ln(a, implementierung = 1)
 
   # Wenn ein Integer uebergeben wurde, zaubern wir ein Float draus
@@ -24,10 +28,7 @@ def ln(a, implementierung = 1)
   # bei x=2.0 sieht das schon anders aus
   # welches ist nun also ein vernuenftiger Wert?
 
-  genauigkeit = 5000
-
-  # Wo wir schon bei Genauigkeit sind:
-  # Ist unsere Methode hier (bei hoeherer Anzahl von Durchlaufen der Formel) genauer als Math::log(x) ?
+  genauigkeit = 500
 
   # Welche Implementierung wurde gewaehlt?
   # gut, um die verschiedenen Implementierungen auf ihre Performance zu ueberpruefen
@@ -42,28 +43,35 @@ def ln(a, implementierung = 1)
 
 end
 
+# Iterativer Ansatz mit klassischer for-schleife
 def ln_iterativ_for(x, genauigkeit)
 
-  wert = 0.0
+  ln = 0.0
   for i in 1..genauigkeit
-    wert += ((-1)**(i+1)) * (((x-1)**i)/i)
+    ln += ((-1)**(i+1)) * (((x-1)**i)/i)
   end
-  wert
+  ln
 end
 
+# Iterativer Ansatz mit reduce
+#
+# Fuer dieses Rechenbeispiel der langsamste Weg
 def ln_iterativ_reduce(x, genauigkeit)
 
   ln = 0.0
-
   return (0..genauigkeit).reduce { |ln, i|
-    i.to_f
     ln + ((-1)**(i+1))*(((x-1)**i)/i)
   }
 
 end
 
-def ln_rekursiv(x, i)
+# Rekursiver Ansatz.
+#
+# Fuer dieses Rechenbeispiel der schnellste Weg
+def ln_rekursiv(x, genauigkeit)
 
+  i = genauigkeit
+  
   return (x-1) if i == 1
   return ((-1)**(i+1))*(((x-1)**i)/i) + ln_rekursiv(x, i - 1)
 
